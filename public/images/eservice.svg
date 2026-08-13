@@ -1,0 +1,137 @@
+<svg width="480" height="560" viewBox="0 0 480 560" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="ringG" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EAF6FF"/>
+      <stop offset="100%" stop-color="#BFE3FA"/>
+    </linearGradient>
+    <radialGradient id="sphereG" cx="35%" cy="28%" r="75%">
+      <stop offset="0%" stop-color="#5FC4FF"/>
+      <stop offset="45%" stop-color="#1E86E8"/>
+      <stop offset="100%" stop-color="#0B3E86"/>
+    </radialGradient>
+    <linearGradient id="glossG" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="ribbonG" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0B3E86"/>
+      <stop offset="50%" stop-color="#1E7FE0"/>
+      <stop offset="100%" stop-color="#0B3E86"/>
+    </linearGradient>
+    <filter id="softShadow" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#08356E" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <!-- outer white ring -->
+  <circle cx="240" cy="222" r="205" fill="url(#ringG)" filter="url(#softShadow)"/>
+  <!-- inner glossy sphere -->
+  <circle cx="240" cy="222" r="183" fill="url(#sphereG)"/>
+  <path d="M75,135 A183,183 0 0 1 405,135 A215,130 0 0 0 75,135 Z" fill="url(#glossG)"/>
+
+  <!-- connecting lines from center hub to five service icons (pentagon layout, spaced further apart) -->
+  <g stroke="#EAF6FF" stroke-width="3.5" opacity="0.75">
+    <line x1="240" y1="222" x2="240" y2="118"/>
+    <line x1="240" y1="222" x2="349" y2="192"/>
+    <line x1="240" y1="222" x2="308" y2="308"/>
+    <line x1="240" y1="222" x2="172" y2="308"/>
+    <line x1="240" y1="222" x2="131" y2="192"/>
+  </g>
+
+  <!-- center hub: hand holding a phone showing the EDL logo -->
+  <circle cx="240" cy="222" r="56" fill="#FFFFFF"/>
+
+  <!-- hand (palm + thumb) cradling the phone from below -->
+  <path d="M213,240 Q212,270 240,272 Q268,270 267,240 L267,216 Q267,207 258,206 L258,240 Q258,252 248,252 L232,252 Q222,252 222,240 L222,206 Q213,207 213,216 Z" fill="#0B3E86"/>
+  <ellipse cx="216" cy="214" rx="7.5" ry="15" fill="#0B3E86" transform="rotate(-25 216 214)"/>
+
+  <!-- phone body -->
+  <rect x="218" y="182" width="44" height="70" rx="9" fill="#0B3E86"/>
+  <rect x="223" y="188" width="34" height="55" rx="4" fill="#FFFFFF"/>
+
+  <!-- mini EDL logo on the phone screen: yellow gear + blue ring + red bolt -->
+  <g>
+    <!-- gear teeth -->
+    <g fill="#F5C518">
+      <rect x="238" y="200" width="4" height="6" transform="rotate(0 240 215)"/>
+      <rect x="238" y="200" width="4" height="6" transform="rotate(45 240 215)"/>
+      <rect x="238" y="200" width="4" height="6" transform="rotate(90 240 215)"/>
+      <rect x="238" y="200" width="4" height="6" transform="rotate(135 240 215)"/>
+      <rect x="238" y="200" width="4" height="6" transform="rotate(180 240 215)"/>
+      <rect x="238" y="200" width="4" height="6" transform="rotate(225 240 215)"/>
+      <rect x="238" y="200" width="4" height="6" transform="rotate(270 240 215)"/>
+      <rect x="238" y="200" width="4" height="6" transform="rotate(315 240 215)"/>
+    </g>
+    <circle cx="240" cy="215" r="11" fill="#F5C518"/>
+    <circle cx="240" cy="215" r="8.5" fill="#1E3A8A"/>
+    <circle cx="240" cy="215" r="5.5" fill="#FFFFFF"/>
+    <path d="M248,204 L235,216 L241,216 L233,228 L250,212 L244,212 Z" fill="#E2231A"/>
+  </g>
+
+  <!-- 1. Solar panel (top) -->
+  <g transform="translate(211,98)">
+    <rect x="0" y="0" width="58" height="38" rx="4" fill="#EAF6FF"/>
+    <line x1="14" y1="0" x2="14" y2="38" stroke="#1E7FE0" stroke-width="3"/>
+    <line x1="29" y1="0" x2="29" y2="38" stroke="#1E7FE0" stroke-width="3"/>
+    <line x1="44" y1="0" x2="44" y2="38" stroke="#1E7FE0" stroke-width="3"/>
+    <line x1="0" y1="19" x2="58" y2="19" stroke="#1E7FE0" stroke-width="3"/>
+  </g>
+  <text x="240" y="153" text-anchor="middle" font-family="Phetsarath, 'Phetsarath OT', 'Noto Sans Lao', sans-serif" font-weight="600" font-size="13" fill="#FFFFFF">ແຜງໂຊລາເຊວ</text>
+
+  <!-- 2. Bill / kWh calculation (upper right) -->
+  <g transform="translate(328,160)">
+    <rect x="0" y="0" width="42" height="52" rx="6" fill="#EAF6FF"/>
+    <text x="21" y="24" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-weight="800" font-size="14" fill="#0B3E86">kWh</text>
+    <line x1="7" y1="33" x2="35" y2="33" stroke="#1E7FE0" stroke-width="3"/>
+    <line x1="7" y1="42" x2="35" y2="42" stroke="#1E7FE0" stroke-width="3"/>
+  </g>
+  <text x="349" y="228" text-anchor="middle" font-family="Phetsarath, 'Phetsarath OT', 'Noto Sans Lao', sans-serif" font-weight="600" font-size="13" fill="#FFFFFF">ຄິດໄລ່ຄ່າໄຟ</text>
+
+  <!-- 3. QR code (lower right) -->
+  <g transform="translate(285,285)">
+    <rect x="0" y="0" width="46" height="46" rx="4" fill="#EAF6FF"/>
+    <rect x="4" y="4" width="12" height="12" fill="#0B3E86"/>
+    <rect x="30" y="4" width="12" height="12" fill="#0B3E86"/>
+    <rect x="4" y="30" width="12" height="12" fill="#0B3E86"/>
+    <rect x="20" y="4" width="6" height="6" fill="#0B3E86"/>
+    <rect x="20" y="20" width="6" height="6" fill="#0B3E86"/>
+    <rect x="30" y="20" width="6" height="6" fill="#0B3E86"/>
+    <rect x="20" y="30" width="6" height="6" fill="#0B3E86"/>
+    <rect x="30" y="36" width="6" height="6" fill="#0B3E86"/>
+  </g>
+  <text x="308" y="350" text-anchor="middle" font-family="Phetsarath, 'Phetsarath OT', 'Noto Sans Lao', sans-serif" font-weight="600" font-size="13" fill="#FFFFFF">ສ້າງ QR Code</text>
+
+  <!-- 4. New meter installation request (lower left) -->
+  <g transform="translate(149,285)">
+    <circle cx="23" cy="23" r="23" fill="#EAF6FF"/>
+    <circle cx="23" cy="23" r="15" fill="none" stroke="#0B3E86" stroke-width="3"/>
+    <line x1="23" y1="23" x2="30" y2="14" stroke="#0B3E86" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="23" cy="23" r="2.5" fill="#0B3E86"/>
+    <circle cx="40" cy="6" r="10" fill="#1E7FE0"/>
+    <line x1="40" y1="1" x2="40" y2="11" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="35" y1="6" x2="45" y2="6" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round"/>
+  </g>
+  <text x="172" y="350" text-anchor="middle" font-family="Phetsarath, 'Phetsarath OT', 'Noto Sans Lao', sans-serif" font-weight="600" font-size="13" fill="#FFFFFF">ຂໍຊົມໃຊ້ໄຟໃໝ່</text>
+
+  <!-- 5. EV car with lightning bolt (upper left) -->
+  <g transform="translate(102,172)">
+    <!-- car roof/cabin -->
+    <path d="M13,10 L19,0 L37,0 L43,10 Z" fill="#EAF6FF"/>
+    <!-- car body -->
+    <rect x="1" y="10" width="54" height="16" rx="6" fill="#EAF6FF"/>
+    <!-- wheels -->
+    <circle cx="14" cy="30" r="7" fill="#0B3E86"/>
+    <circle cx="42" cy="30" r="7" fill="#0B3E86"/>
+    <circle cx="14" cy="30" r="2.5" fill="#EAF6FF"/>
+    <circle cx="42" cy="30" r="2.5" fill="#EAF6FF"/>
+    <!-- lightning bolt on the car body -->
+    <path d="M33,4 L22,19 L28,19 L24,32 L39,15 L32,15 Z" fill="#0B3E86"/>
+  </g>
+  <text x="129" y="238" text-anchor="middle" font-family="Phetsarath, 'Phetsarath OT', 'Noto Sans Lao', sans-serif" font-weight="600" font-size="13" fill="#FFFFFF">ລົງທະບຽນ EV</text>
+
+  <!-- bottom ribbon banner -->
+  <rect x="30" y="440" width="420" height="66" rx="33" fill="url(#ribbonG)" filter="url(#softShadow)"/>
+  <circle cx="80" cy="473" r="24" fill="#EAF6FF"/>
+  <path d="M88,456 L68,480 L80,480 L74,496 L94,472 L82,472 Z" fill="#0B3E86"/>
+  <text x="245" y="484" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-weight="800" font-size="30" fill="#FFFFFF" letter-spacing="2">E-SERVICE</text>
+</svg>

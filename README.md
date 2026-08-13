@@ -1,36 +1,96 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# EDL Systems Portal
+
+Portal ກາງສຳລັບເຂົ້ານຳໃຊ້ລະບົບຕ່າງໆ ຂອງ ຟຟລ — Next.js (App Router) + TypeScript + Tailwind CSS.
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm ci
+npm run dev     # http://localhost:4000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Scripts
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Script | Description |
+| --- | --- |
+| `npm run dev` | Development server (port 4000) |
+| `npm run build` | Production build |
+| `npm run start` | Start production server |
+| `npm run lint` | ESLint |
+| `npm run typecheck` | TypeScript check (no emit) |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Project Structure
 
-## Learn More
+```
+src/
+  app/                 # App Router: layout, page, global styles
+  components/          # UI components
+    ui/                # shadcn-style primitives (button, card, input)
+  config/site.ts       # Shared strings, logo, metadata (single source of truth)
+  data/systems.ts      # System list (data only)
+  lib/                 # Helpers: cn(), filterSystems()
+  types/system.ts      # System / SystemCategory types
+```
 
-To learn more about Next.js, take a look at the following resources:
+### Adding a new system
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Put the logo in `public/images/`
+2. Add an entry in `src/data/systems.ts` (`category` must match `SYSTEM_CATEGORIES`)
+3. For a new category, add it to `SYSTEM_CATEGORIES` in `src/types/system.ts`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Deployment (Company Server + PM2)
 
-## Deploy on Vercel
+Node.js server mode is used, so API routes / SSR remain available later.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+# First time (on the server)
+git clone <gitlab-repo-url> /var/www/allsoftware-svc
+cd /var/www/allsoftware-svc
+npm ci
+npm run build
+pm2 start ecosystem.config.js
+pm2 save
+pm2 startup          # auto-start PM2 after reboot
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# Every later deploy
+cd /var/www/allsoftware-svc
+git pull origin main
+npm ci
+npm run build
+pm2 reload allsoftware-svc
+```
+
+### PM2 commands
+
+```bash
+pm2 status
+pm2 logs allsoftware-svc
+pm2 reload allsoftware-svc     # zero-downtime restart
+pm2 stop allsoftware-svc
+```
+
+Port and hostname are configured in `ecosystem.config.js` (`PORT`, `HOSTNAME`).
+
+### Nginx reverse proxy (example)
+
+```nginx
+server {
+    listen 80;
+    server_name portal.edl.com.la;
+
+    location / {
+        proxy_pass http://127.0.0.1:4000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+```
+
+## CI (GitLab)
+
+`.gitlab-ci.yml` runs `lint`, `typecheck`, then `build` on every push, catching errors before they reach the server.
