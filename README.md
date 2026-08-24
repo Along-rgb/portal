@@ -38,9 +38,24 @@ src/
 2. Add an entry in `src/data/systems.ts` (`category` must match `SYSTEM_CATEGORIES`)
 3. For a new category, add it to `SYSTEM_CATEGORIES` in `src/types/system.ts`
 
-## Deployment (Company Server + PM2)
+## Deployment
 
-Node.js server mode is used, so API routes / SSR remain available later.
+### Static Export (Recommended)
+
+This project is configured for static export. No Node.js server required.
+
+```bash
+npm run build
+```
+
+Static files will be generated in the `out/` directory and can be deployed to:
+- Netlify, Vercel, GitHub Pages, Cloudflare Pages
+- Any static file hosting (nginx, Apache, S3, etc.)
+- Simply upload the `out/` directory contents
+
+### Node.js Server Mode (Optional)
+
+If you need server-side features later, you can remove `output: 'export'` from `next.config.ts` and run:
 
 ```bash
 # First time (on the server)
@@ -60,7 +75,7 @@ npm run build
 pm2 reload allsoftware-svc
 ```
 
-### PM2 commands
+### PM2 commands (if using server mode)
 
 ```bash
 pm2 status
