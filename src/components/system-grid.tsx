@@ -47,7 +47,7 @@ export function SystemGrid({ systems }: { systems: System[] }) {
             <SystemCard
               key={system.id}
               system={system}
-              priority={index < 10}
+              priority={index < 5}
             />
           ))}
         </div>

@@ -12,7 +12,8 @@ export function Header() {
           width={siteConfig.logo.width}
           height={siteConfig.logo.height}
           className="size-30 object-contain"
-          priority
+          preload
+          fetchPriority="high"
           unoptimized
         />
         <span className="text-base font-semibold tracking-tight text-foreground">

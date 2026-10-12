@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Noto_Sans_Lao } from "next/font/google";
+import { preload } from "react-dom";
 import { siteConfig } from "@/config/site";
 import "./globals.css";
 
@@ -26,6 +27,8 @@ export const viewport: Viewport = {
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
+  preload(siteConfig.backgroundImage, { as: "image", fetchPriority: "high" });
+
   return (
     <html
       lang={siteConfig.locale}

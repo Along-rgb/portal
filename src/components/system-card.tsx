@@ -53,7 +53,8 @@ export function SystemCard({
                   : undefined
               }
               sizes="112px"
-              priority={priority}
+              preload={priority}
+              fetchPriority={priority ? "high" : "low"}
               loading={priority ? "eager" : "lazy"}
               unoptimized
             />
