@@ -3,6 +3,29 @@ import type { System } from "@/types/system";
 export const systems: System[] = [
  
   {
+    id: "edl-app",
+    name: "ລະບົບ EDL App",
+    description: "ດາວໂຫຼດ EDL App ສຳລັບ iOS ແລະ Android",
+    category: "Services",
+    image: "/images/edl_logo_transparent.png",
+    downloads: [
+      {
+        name: "App Store",
+        platform: "iOS",
+        image: "/images/apple.png",
+        url: "https://apps.apple.com/la/app/edl-app/id6648761593",
+      },
+      {
+        name: "Google Play",
+        platform: "Android",
+        image: "/images/appstore.png",
+        url: "https://play.google.com/store/apps/details?id=com.edl.edl_app",
+      },
+    ],
+    keywords: ["edl app", "ios", "android", "apple", "app store", "google play", "ດາວໂຫຼດ"],
+  },
+
+  {
     id: "kpi",
     name: "ລະບົບ KPI",
     description: "ລະບົບປະເມີນພະນັກງານ",
@@ -230,5 +253,27 @@ export const systems: System[] = [
     imageScale:1.3,
     url: "https://app-api.edl.com.la/",
     keywords: ["web", "admin", "ຄຸ້ມຄອງ", "ເວັບໄຊຕ໌"],
+  },
+
+  {
+    id: "ict-inventory",
+    name: "ລະບົບຄຸ້ມຄອງສາງ ICT",
+     description: "ລະບົບຄຸ້ມຄອງສາງ",
+    category: "Warehouse",
+    image: "/images/werehouse.png",
+    imageScale:1.1,
+    url: "https://ict-inventory.edl.com.la/",
+    keywords: ["ict", "inventory", "warehouse", "ສາງ"],
+  },
+
+  {
+    id: "ecc",
+    name: "ລະບົບບໍລິການຄຸ້ມຄອງ ແລະ ສົ່ງແຈ້ງເຕືອນຂ່າວສ່ານໄຟຟ້າແບບຄົບວົງຈອນ",
+    description: "ລະບົບບໍລິການຄຸ້ມຄອງ ແລະ ສົ່ງແຈ້ງເຕືອນຂ່າວສ່ານໄຟຟ້າແບບຄົບວົງຈອນ",
+    category: "Services",
+    image: "/images/ECC.png",
+    imageScale:1.1,
+    url: "https://app-portal.edl.com.la/signin",
+    keywords: ["ecc", "1199", "contact center", "app portal", "ບໍລິການ", "ແຈ້ງເຕືອນ", "ໄຟຟ້າ"],
   }
 ];

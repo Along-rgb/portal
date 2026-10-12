@@ -17,6 +17,7 @@ export const SYSTEM_CATEGORIES = [
    "ການຈັດການ",
   "Information",
   "Administration",
+  "Warehouse"
 ] as const;
 
 export type SystemCategory = (typeof SYSTEM_CATEGORIES)[number];
@@ -28,6 +29,8 @@ export type System = {
   category?: SystemCategory;
   image: string;
   imageScale?: number;
-  url: string;
   keywords?: string[];
-};
+} & (
+  | { url: string; downloads?: never }
+  | { url?: never; downloads: { name: string; platform: string; image: string; url: string }[] }
+);
