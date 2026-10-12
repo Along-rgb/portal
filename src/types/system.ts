@@ -31,6 +31,10 @@ export type System = {
   imageScale?: number;
   keywords?: string[];
 } & (
-  | { url: string; downloads?: never }
-  | { url?: never; downloads: { name: string; platform: string; image: string; url: string }[] }
+  | { url: string; downloads?: never; web?: never }
+  | {
+      url?: never;
+      downloads: { name: string; platform: string; image: string; url: string }[];
+      web?: { name: string; image: string; url: string };
+    }
 );

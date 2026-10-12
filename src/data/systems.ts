@@ -34,6 +34,11 @@ export const systems: System[] = [
         url: "https://play.google.com/store/apps/details?id=com.edl.edl_app",
       },
     ],
+    web: {
+      name: "Admin EDL App ",
+      image: "/images/edl_logo_transparent.png",
+      url: "https://app-api.edl.com.la/signin?callbackUrl=%2F",
+    },
     keywords: ["edl app", "ios", "android", "apple", "app store", "google play", "ດາວໂຫຼດ"],
   },
 

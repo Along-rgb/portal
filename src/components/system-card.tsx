@@ -105,7 +105,7 @@ export function SystemCard({
           <div className="p-6">
             <div className="relative mb-6 flex min-h-9 items-center justify-center">
               <h2 id={titleId} className="px-10 text-center text-lg font-semibold">
-                ສາມາດດາວໂຫຼດໄດ້ ທັງ
+                ຖ້າບໍ່ມີແອັບສາມາດດາວໂຫຼດໄດ້ ທັງ 
               </h2>
               <button
                 type="button"
@@ -139,6 +139,28 @@ export function SystemCard({
                 </a>
               ))}
             </div>
+            {system.web && (
+              <>
+                <h3 className="mt-6 mb-4 text-center text-lg font-semibold">
+                  ຫຼື ເຂົ້ານຳໃຊ້
+                </h3>
+                <a
+                  href={system.web.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-4 rounded-xl border border-border p-4 transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                >
+                  <Image
+                    src={system.web.image}
+                    alt={system.web.name}
+                    width={56}
+                    height={56}
+                    unoptimized
+                  />
+                  <span className="text-sm font-semibold">{system.web.name}</span>
+                </a>
+              </>
+            )}
           </div>
         </dialog>
       )}
