@@ -35,7 +35,7 @@ export const systems: System[] = [
       },
     ],
     web: {
-      name: "Admin EDL App ",
+      name: "Admin EDL Web&App ",
       image: "/images/edl_logo_transparent.png",
       url: "https://app-api.edl.com.la/signin?callbackUrl=%2F",
     },
