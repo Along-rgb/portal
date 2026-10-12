@@ -2,6 +2,18 @@ import type { System } from "@/types/system";
 
 export const systems: System[] = [
  
+    {
+    id: "edl-website",
+    name: "ລະບົບ EDL Website",
+    description: "ເວັບໄຊ ຟຟລ",
+    category: "Website",
+    image: "/images/Website.png",
+    imageScale: 1.3,
+    url: "https://edl.com.la/",
+    keywords: ["website", "edl", "ເວັບໄຊ"],
+  },
+
+
   {
     id: "edl-app",
     name: "ລະບົບ EDL App",
@@ -111,17 +123,6 @@ export const systems: System[] = [
     imageScale: 1.3,
     url: "https://customer-survey.edl.com.la/",
     keywords: ["customer", "crm", "ລູກຄ້າ", "ການຂາຍ"],
-  },
-
-  {
-    id: "edl-website",
-    name: "ລະບົບ EDL Website",
-    description: "ເວັບໄຊ ຟຟລ",
-    category: "Website",
-    image: "/images/Website.png",
-    imageScale: 1.3,
-    url: "https://edl.com.la/",
-    keywords: ["website", "edl", "ເວັບໄຊ"],
   },
 
   {
