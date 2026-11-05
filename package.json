@@ -3,6 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "predev": "npm run optimize:images",
+    "prebuild": "npm run optimize:images",
+    "preexport": "npm run optimize:images",
+    "optimize:images": "node scripts/optimize-images.mjs",
+    "test:images": "node --experimental-strip-types --test scripts/images.test.mjs",
     "dev": "next dev -p 4000",
     "build": "next build",
     "start": "next start",
@@ -31,6 +36,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.3.0",
+    "sharp": "0.35.3",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

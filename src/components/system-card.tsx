@@ -1,9 +1,9 @@
 "use client";
 
 import { useId, useRef } from "react";
-import Image from "next/image";
 import { ExternalLink, X } from "lucide-react";
 
+import { AppImage } from "@/components/app-image";
 import type { System } from "@/types/system";
 import { cn } from "@/lib/utils";
 
@@ -42,7 +42,7 @@ export function SystemCard({
       >
         <div className="relative flex size-28 items-center justify-center overflow-hidden rounded-2xl transition-transform duration-300 ease-out group-hover:scale-110 group-hover:drop-shadow-lg motion-reduce:group-hover:scale-100">
           {system.image ? (
-            <Image
+            <AppImage
               src={system.image}
               alt={`${system.name} logo`}
               fill
@@ -53,10 +53,8 @@ export function SystemCard({
                   : undefined
               }
               sizes="112px"
-              preload={priority}
-              fetchPriority={priority ? "high" : "low"}
+              fetchPriority={priority ? "high" : "auto"}
               loading={priority ? "eager" : "lazy"}
-              unoptimized
             />
           ) : (
             <div className="flex size-full items-center justify-center text-2xl font-bold text-muted-foreground/40">
@@ -127,12 +125,11 @@ export function SystemCard({
                 >
                   <span className="text-base font-semibold">{download.platform}</span>
                   <div className="flex size-24 items-center justify-center rounded-xl bg-white">
-                    <Image
+                    <AppImage
                       src={download.image}
                       alt={download.name}
                       width={64}
                       height={64}
-                      unoptimized
                     />
                   </div>
                   <span className="text-sm font-semibold">{download.name}</span>
@@ -150,12 +147,11 @@ export function SystemCard({
                   rel="noopener noreferrer"
                   className="flex items-center justify-center gap-4 rounded-xl border border-border p-4 transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 >
-                  <Image
+                  <AppImage
                     src={system.web.image}
                     alt={system.web.name}
                     width={56}
                     height={56}
-                    unoptimized
                   />
                   <span className="text-sm font-semibold">{system.web.name}</span>
                 </a>

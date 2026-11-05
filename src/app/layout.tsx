@@ -1,7 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Noto_Sans_Lao } from "next/font/google";
 import { preload } from "react-dom";
+import { AppImage } from "@/components/app-image";
 import { siteConfig } from "@/config/site";
+import { optimizedImagePath } from "@/lib/image";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -27,7 +29,7 @@ export const viewport: Viewport = {
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
-  preload(siteConfig.backgroundImage, { as: "image", fetchPriority: "high" });
+  preload(optimizedImagePath(siteConfig.backgroundImage), { as: "image", fetchPriority: "high" });
 
   return (
     <html
@@ -35,11 +37,17 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${geistSans.variable} ${notoSansLao.variable} h-full antialiased`}
     >
       <body className="relative min-h-full flex flex-col overflow-x-hidden text-foreground">
-        <div
-          className="fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url('${siteConfig.backgroundImage}')` }}
-          aria-hidden="true"
-        />
+        <div className="fixed inset-0 -z-10" aria-hidden="true">
+          <AppImage
+            src={siteConfig.backgroundImage}
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-cover"
+            loading="eager"
+            fetchPriority="high"
+          />
+        </div>
         {children}
       </body>
     </html>
